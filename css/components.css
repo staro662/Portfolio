@@ -1,0 +1,699 @@
+/**
+ * COMPONENTS.CSS - 组件样式文件
+ * 包含: 按钮、卡片、表单、导航等可复用组件
+ * 作者: UX Designer
+ * 更新: 2025-09-29
+ */
+
+/* ========================================
+   按钮组件 / Button Components
+   ======================================== */
+
+/* 基础按钮样式 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 2rem;
+    /* 上下内边距 12px, 左右内边距 32px */
+    font-size: var(--text-base);
+    font-weight: 500;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    border-radius: var(--radius-full);
+    /* 完全圆角 */
+    transition: all var(--transition-base) var(--ease-in-out);
+    cursor: pointer;
+    border: none;
+    text-decoration: none;
+}
+
+/* 主要按钮 - 强调色背景 */
+.btn-primary {
+    background-color: var(--color-accent);
+    color: white;
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover {
+    background-color: rgba(166, 124, 82, 0.9);
+    /* accent 色调暗 10% */
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+    /* 悬停时上浮效果 */
+}
+
+/* 次要按钮 - 边框样式 */
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-dark);
+    border: 2px solid var(--color-dark);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-dark);
+    color: white;
+}
+
+/* 按钮内的图标间距 */
+.btn i {
+    margin-left: 0.5rem;
+}
+
+/* 按钮禁用状态 */
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ========================================
+   卡片组件 / Card Components
+   ======================================== */
+
+/* 基础卡片 */
+.card {
+    background-color: white;
+    border-radius: var(--radius-xl);
+    /* 24px 圆角 */
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-base) var(--ease-in-out);
+}
+
+/* 卡片悬停效果 */
+.card:hover {
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-8px);
+    /* 悬停上浮 8px */
+}
+
+/* 卡片图片容器 */
+.card-image {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    /* 保持 16:9 宽高比 */
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 图片覆盖整个容器 */
+    transition: transform var(--transition-slow) var(--ease-in-out);
+}
+
+/* 卡片悬停时图片放大 */
+.card:hover .card-image img {
+    transform: scale(1.05);
+    /* 放大 5% */
+}
+
+/* 卡片内容区域 */
+.card-content {
+    padding: 1.5rem;
+    /* 24px 内边距 */
+}
+
+/* 卡片标题 */
+.card-title {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    transition: color var(--transition-base) var(--ease-in-out);
+}
+
+.card:hover .card-title {
+    color: var(--color-accent);
+    /* 悬停时标题变色 */
+}
+
+/* 卡片描述文本 */
+.card-description {
+    font-size: var(--text-sm);
+    color: rgba(58, 50, 56, 0.7);
+    /* 文字透明度 70% */
+    line-height: 1.6;
+}
+
+/* 卡片标签 */
+.card-tag {
+    display: inline-block;
+    font-size: var(--text-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    /* 大写字母 */
+    letter-spacing: 0.05em;
+    /* 字母间距 */
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   导航组件 / Navigation Components
+   ======================================== */
+
+/* 导航栏容器 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    /* 确保在其他内容之上 */
+    transition: all var(--transition-base) var(--ease-in-out);
+}
+
+/* 导航栏滚动后的样式 */
+.navbar.scrolled {
+    background-color: white;
+    box-shadow: var(--shadow-md);
+}
+
+/* 导航链接 */
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    color: var(--color-dark);
+    padding: 0.5rem 0;
+    transition: color var(--transition-base) var(--ease-in-out);
+}
+
+/* 导航链接下划线效果 */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-accent);
+    transition: width var(--transition-base) var(--ease-in-out);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+    /* 悬停或激活时下划线展开 */
+}
+
+/* Logo 样式 */
+.logo {
+    font-size: var(--text-2xl);
+    font-weight: 700;
+    font-family: var(--font-display);
+    color: var(--color-dark);
+    display: flex;
+    align-items: center;
+}
+
+.logo-accent {
+    color: var(--color-accent);
+    margin-right: 0.25rem;
+}
+
+/* Logo 装饰线 */
+.logo-line {
+    height: 4px;
+    width: 0;
+    background-color: var(--color-accent);
+    margin-left: 0.5rem;
+    transition: width var(--transition-base) var(--ease-in-out);
+}
+
+.logo:hover .logo-line {
+    width: 1.5rem;
+    /* 悬停时展开装饰线 */
+}
+
+/* ========================================
+   表单组件 / Form Components
+   ======================================== */
+
+/* 表单组 */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+/* 表单标签 */
+.form-label {
+    display: block;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: rgba(58, 50, 56, 0.8);
+    margin-bottom: 0.5rem;
+}
+
+/* 表单输入框 */
+.form-input,
+.form-textarea,
+.form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: var(--text-base);
+    line-height: 1.5;
+    color: var(--color-dark);
+    background-color: white;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    outline: none;
+    transition: all var(--transition-base) var(--ease-in-out);
+}
+
+/* 输入框聚焦状态 */
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(166, 124, 82, 0.1);
+    /* 聚焦时的外发光 */
+}
+
+/* 文本域特定样式 */
+.form-textarea {
+    resize: vertical;
+    /* 只允许垂直调整大小 */
+    min-height: 120px;
+}
+
+/* 输入框错误状态 */
+.form-input.error,
+.form-textarea.error {
+    border-color: #ef4444;
+    /* 红色边框 */
+}
+
+/* 错误提示文本 */
+.form-error {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: var(--text-xs);
+    color: #ef4444;
+}
+
+/* ========================================
+   标签组件 / Tag Components
+   ======================================== */
+
+/* 标签基础样式 */
+.tag {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    font-size: var(--text-xs);
+    font-weight: 500;
+    border-radius: var(--radius-full);
+    background-color: rgba(212, 197, 177, 0.3);
+    /* 辅助色半透明背景 */
+    color: rgba(58, 50, 56, 0.7);
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* ========================================
+   图标按钮 / Icon Buttons
+   ======================================== */
+
+/* 圆形图标按钮 */
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background-color: white;
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base) var(--ease-in-out);
+    cursor: pointer;
+    border: none;
+}
+
+.icon-button:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+    /* 悬停上浮 */
+}
+
+.icon-button i {
+    color: rgba(58, 50, 56, 0.7);
+    transition: color var(--transition-base) var(--ease-in-out);
+}
+
+.icon-button:hover i {
+    color: var(--color-accent);
+    /* 悬停时图标变色 */
+}
+
+/* ========================================
+   社交媒体链接 / Social Media Links
+   ======================================== */
+
+/* 社交媒体图标容器 */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    /* 图标间距 */
+}
+
+/* 社交媒体链接 */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+    transition: all var(--transition-base) var(--ease-in-out);
+}
+
+.social-link:hover {
+    background-color: var(--color-accent);
+    color: white;
+    transform: translateY(-4px);
+    /* 悬停上浮 */
+}
+
+/* ========================================
+   技能卡片 / Skill Cards
+   ======================================== */
+
+/* 技能卡片容器 */
+.skill-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+/* 技能图标容器 */
+.skill-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background-color: rgba(212, 197, 177, 0.2);
+    flex-shrink: 0;
+    /* 防止图标缩小 */
+}
+
+.skill-icon i {
+    font-size: var(--text-xl);
+    color: var(--color-accent);
+}
+
+/* 技能内容 */
+.skill-content h4 {
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.skill-content p {
+    font-size: var(--text-sm);
+    color: rgba(58, 50, 56, 0.7);
+    margin-bottom: 0;
+}
+
+/* ========================================
+   移动端菜单 / Mobile Menu
+   ======================================== */
+
+/* 汉堡菜单按钮 */
+.menu-toggle {
+    display: none;
+    /* 默认隐藏 */
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-dark);
+}
+
+/* 移动端菜单容器 */
+.mobile-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-100%);
+    /* 初始状态在视口外 */
+    opacity: 0;
+    pointer-events: none;
+    /* 隐藏时不可交互 */
+    transition: all var(--transition-base) var(--ease-in-out);
+}
+
+/* 移动端菜单展开状态 */
+.mobile-menu.active {
+    transform: translateY(0);
+    /* 滑入视口 */
+    opacity: 1;
+    pointer-events: auto;
+    /* 可交互 */
+}
+
+/* 移动端导航链接 */
+.mobile-menu .nav-link {
+    display: block;
+    padding: 1rem;
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* 响应式显示 */
+@media (max-width: 767px) {
+    .menu-toggle {
+        display: flex;
+        /* 小屏幕显示菜单按钮 */
+    }
+
+    .desktop-nav {
+        display: none;
+        /* 隐藏桌面导航 */
+    }
+}
+
+/* ========================================
+   语言切换器 / Language Switcher
+   ======================================== */
+
+/* 语言切换容器 */
+.language-switcher {
+    display: flex;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    padding: 0.125rem;
+    background-color: white;
+}
+
+/* 语言按钮 */
+.lang-button {
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    color: var(--color-dark);
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all var(--transition-base) var(--ease-in-out);
+}
+
+/* 激活的语言按钮 */
+.lang-button.active {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+/* ========================================
+   引用块 / Blockquote
+   ======================================== */
+
+/* 引用容器 */
+.blockquote {
+    position: relative;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.6;
+    margin: 2rem 0;
+    padding: 0 2rem;
+}
+
+/* 引号装饰 */
+.quote-mark {
+    position: absolute;
+    font-size: 4rem;
+    color: rgba(166, 124, 82, 0.3);
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+.quote-mark.open {
+    top: -2rem;
+    left: -1rem;
+}
+
+.quote-mark.close {
+    bottom: -3rem;
+    right: -1rem;
+}
+
+/* ========================================
+   联系信息卡片 / Contact Info Card
+   ======================================== */
+
+/* 联系方式项 */
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* 联系图标容器 */
+.contact-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background-color: white;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.contact-icon i {
+    color: var(--color-accent);
+    font-size: var(--text-lg);
+}
+
+/* 联系内容 */
+.contact-content h4 {
+    font-size: var(--text-base);
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+}
+
+.contact-content a,
+.contact-content p {
+    font-size: var(--text-sm);
+    color: rgba(58, 50, 56, 0.7);
+    margin-bottom: 0;
+}
+
+.contact-content a:hover {
+    color: var(--color-accent);
+}
+
+/* ========================================
+   评分星星 / Rating Stars
+   ======================================== */
+
+/* 星星容器 */
+.rating-stars {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.rating-stars i {
+    color: #fbbf24;
+    /* 金色 */
+    font-size: var(--text-base);
+}
+
+/* ========================================
+   用户头像组 / Avatar Group
+   ======================================== */
+
+/* 头像组容器 */
+.avatar-group {
+    display: flex;
+    margin-left: -0.75rem;
+    /* 负边距实现重叠效果 */
+}
+
+/* 头像 */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    border: 2px solid white;
+    object-fit: cover;
+    margin-left: -0.75rem;
+    /* 每个头像向左重叠 */
+}
+
+.avatar:first-child {
+    margin-left: 0;
+    /* 第一个头像不偏移 */
+}
+
+/* ========================================
+   分隔线 / Dividers
+   ======================================== */
+
+/* 装饰性分隔线 */
+.divider {
+    width: 80px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin: 1rem auto;
+    /* 居中显示 */
+}
+
+/* ========================================
+   加载状态 / Loading States
+   ======================================== */
+
+/* 加载动画容器 */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(166, 124, 82, 0.3);
+    border-top-color: var(--color-accent);
+    border-radius: var(--radius-full);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ========================================
+   响应式组件调整 / Responsive Component Adjustments
+   ======================================== */
+
+@media (max-width: 767px) {
+
+    /* 移动端按钮全宽 */
+    .btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* 移动端卡片内容增加内边距 */
+    .card-content {
+        padding: 1rem;
+    }
+
+    /* 移动端技能卡片堆叠 */
+    .skill-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}

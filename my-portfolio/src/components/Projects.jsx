@@ -1,25 +1,28 @@
 // src/components/Projects.jsx
 import React, { useState } from "react";
 import { useTranslation } from '../hooks/useTranslation';
+import StackedGenderMap from '../image/STACKEDGENDER-MAP.png';
 
 const Projects = () => {
     const { t } = useTranslation();
     const [hoveredProject, setHoveredProject] = useState(null);
 
     const projects = [
-        {
-            id: 'earring',
+       
+          {
+            id: 'pantheon-1-0',
             number: '01',
-            title: 'NOIRMOON PIERCING',
-            category: 'BRANDING + WEBSITE',
-            description: 'THE FACULTY TO CERTIFY AND GUARANTEE THE QUALITY OF CANNABIS DERIVATIVES WITH A HIGH LEVEL OF CONFIDENCE. A NEW BRAND, AND NEW SERVICE IN ARGENTINA.',
-            hoverImage: 'https://via.placeholder.com/350x250/3eeabf/ffffff?text=Hemp+Lab+Preview'
+            title: 'PANTHEON 1.0',
+            category: 'DATA VIZ + TABLEAU',
+            description: 'A DASHBOARD EXPLORE: GENDER, DOMAIN, LANGUAGE, AND GEOGRAPHIC PATTERNS IN RENOWNED INDIVIDUALS.',
+            hoverImage: StackedGenderMap,
+            externalUrl: '/pantheon.html'
         },
         {
             id: 'ADHD digital intervention',
             number: '02',
             title: 'Tools for ADHD TEENS',
-            category: 'UX/UI + RESEARCH',
+            category: 'UX/UI + APP',
             description: 'MORE THAN COURSES. TECHNOLOGY\'S FRIENDS CLUB, AN EDUCATIONAL PLATFORM FOR DIGITAL SKILLS DEVELOPMENT.',
             hoverImage: 'https://via.placeholder.com/350x250/C7FF3E/000000?text=Argentec+Preview'
         },
@@ -31,14 +34,15 @@ const Projects = () => {
             description: 'COMPREHENSIVE DESIGN SYSTEM FOR ENTERPRISE APPLICATION. BUILDING CONSISTENT USER EXPERIENCES ACROSS MULTIPLE PLATFORMS.',
             hoverImage: 'https://via.placeholder.com/350x250/FF1493/ffffff?text=Design+System'
         },
-        {
-            id: 'hemp-lab',
-            number: '01',
-            title: 'Hemp lab',
+        /* {
+            id: 'earring',
+            number: '04',
+            title: 'NOIRMOON PIERCING',
             category: 'BRANDING + WEBSITE',
             description: 'THE FACULTY TO CERTIFY AND GUARANTEE THE QUALITY OF CANNABIS DERIVATIVES WITH A HIGH LEVEL OF CONFIDENCE. A NEW BRAND, AND NEW SERVICE IN ARGENTINA.',
             hoverImage: 'https://via.placeholder.com/350x250/3eeabf/ffffff?text=Hemp+Lab+Preview'
-        }
+        },*/
+      
     ];
 
     return (
@@ -48,22 +52,52 @@ const Projects = () => {
                 <div className="neon-divider neon-divider--long"></div>
 
                 <div className="projects__vertical-grid">
-                    {projects.map((project, index) => (
+                    {projects.map((project) => (
                         <div
                             key={project.id}
+                            id={`project-${project.number}`}
                             className="project-card"
                             onMouseEnter={() => setHoveredProject(project.id)}
                             onMouseLeave={() => setHoveredProject(null)}
+                            onClick={() => {
+                                if (project.externalUrl) {
+                                    window.open(project.externalUrl, '_blank', 'noopener,noreferrer');
+                                }
+                            }}
+                            onKeyDown={(e) => {
+                                if ((e.key === 'Enter' || e.key === ' ') && project.externalUrl) {
+                                    e.preventDefault();
+                                    window.open(project.externalUrl, '_blank', 'noopener,noreferrer');
+                                }
+                            }}
+                            role={project.externalUrl ? 'button' : undefined}
+                            tabIndex={project.externalUrl ? 0 : undefined}
                         >
+                            {/* Hover Image Background */}
+                            {hoveredProject === project.id && (
+                                <div 
+                                    className="project-card__background-image"
+                                    style={{
+                                        backgroundImage: `url(${project.hoverImage})`,
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center'
+                                    }}
+                                />
+                            )}
+
                             {/* Project Number */}
-                            <div className="project-card__number">
-                                {project.number}
-                            </div>
+                            {hoveredProject !== project.id && (
+                                <div className="project-card__number">
+                                    {project.number}
+                                </div>
+                            )}
 
                             {/* Project Category Tag */}
-                            <div className="project-card__category">
-                                {project.category}
-                            </div>
+                            {hoveredProject !== project.id && (
+                                <div className="project-card__category">
+                                    {project.category}
+                                </div>
+                            )}
 
                             {/* Project Content */}
                             <div className="project-card__content">
@@ -71,18 +105,6 @@ const Projects = () => {
                                 <p className="project-card__description">
                                     {project.description}
                                 </p>
-                            </div>
-
-                            {/* Hover Image */}
-                            <div className={`project-card__image ${hoveredProject === project.id ? 'project-card__image--visible' : ''
-                                }`}>
-                                <img
-                                    src={project.hoverImage}
-                                    alt={`${project.title} preview`}
-                                    onError={(e) => {
-                                        e.target.style.display = 'none';
-                                    }}
-                                />
                             </div>
                         </div>
                     ))}

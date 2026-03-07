@@ -21,18 +21,19 @@ const Projects = () => {
         {
             id: 'ADHD digital intervention',
             number: '02',
-            title: 'Tools for ADHD TEENS',
+            title: 'Tools for ADHD',
             category: 'UX/UI + APP',
-            description: 'MORE THAN COURSES. TECHNOLOGY\'S FRIENDS CLUB, AN EDUCATIONAL PLATFORM FOR DIGITAL SKILLS DEVELOPMENT.',
-            hoverImage: 'https://via.placeholder.com/350x250/C7FF3E/000000?text=Argentec+Preview'
+            description: 'A MOBILE APP CONCEPT FOR ADHD USERS, DESIGNED TO SUPPORT EMOTIONAL REGULATION, TIME PLANNING, AND CALMING ROUTINES THROUGH INCLUSIVE AND LOW-FRICTION UX.',
+            externalUrl: 'src/components/projects/adhd.html'
         },
         {
             id: 'Classical website',
             number: '03',
             title: 'Animal of Polis',
             category: 'UX/UI + WEBSITE',
-            description: 'COMPREHENSIVE DESIGN SYSTEM FOR ENTERPRISE APPLICATION. BUILDING CONSISTENT USER EXPERIENCES ACROSS MULTIPLE PLATFORMS.',
-            hoverImage: 'https://via.placeholder.com/350x250/FF1493/ffffff?text=Design+System'
+            description: 'A DIGITAL ARCHIVE AND RESEARCH WEBSITE THAT HELPS SCHOLARS ORGANISE, BROWSE, AND INTERPRET ANIMAL-RELATED VISUAL AND TEXTUAL MATERIALS IN ANCIENT GREEK STUDIES.',
+            /*hoverImage: */
+            externalUrl: 'src/components/projects/greekanimal.html'
         },
         /* {
             id: 'earring',
